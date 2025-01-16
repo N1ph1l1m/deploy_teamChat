@@ -1,11 +1,15 @@
-version: "v.2.31.0-desktop.2"
-services:
+version: "3.9"
 
+services:
   backend:
     build: ./backend
     container_name: backend
     ports:
       - "8000:8000"
+    volumes:
+      - ./backend:/app
+    networks:
+      - app_network
 
   frontend:
     build: ./frontend
@@ -15,6 +19,17 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - app_network
 
   redis:
     image: "redis:alpine"
+    container_name: redis
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
