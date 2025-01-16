@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/N1ph1l1m/teamChat.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/N1ph1l1m/backend_teamChat.git
